@@ -59,12 +59,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToPosition(-1);
 
             while (cursor.moveToNext()) {
-
+                Integer userId = cursor.getInt(0);
                 Integer genderId = cursor.getInt(6);
                 String userName = cursor.getString(3);
                 String userEmail = cursor.getString(4);
 
-                objectModelClassList.add(new RVUser(genderId, userName, userEmail));
+                objectModelClassList.add(new RVUser(userId,genderId, userName, userEmail));
             }
             return objectModelClassList;
         } else {

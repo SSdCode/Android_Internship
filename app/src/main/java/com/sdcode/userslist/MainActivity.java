@@ -37,7 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
         usersRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         usersRecyclerView.setAdapter(userRVAdapter);
+
+        userRVAdapter.setOnItemClickListener(new UserRVAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Integer userID = userRVAdapter.getUserId(position);
+//                Messagee.message(getApplicationContext(),Integer.toString(userID));
+
+                Intent i = new Intent(getApplicationContext(), ViewUser.class);
+                i.putExtra("username", Integer.toString(userID));
+                startActivity(i);
+            }
+        });
     }
+
 
 
 
